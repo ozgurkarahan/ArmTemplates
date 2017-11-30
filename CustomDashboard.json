@@ -1,0 +1,263 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appInsightName": {
+            "type": "string"
+        },
+        "appInsightResourceGroup": {
+            "type": "string"
+        },
+        "subscriptionId": {
+            "type": "string"
+        },
+        "dashboardName": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "appInsightResourceId": "[resourceId(parameters('subscriptionId'), parameters('appInsightResourceGroup'), 'Microsoft.insights/components', parameters('appInsightName'))]"
+    },
+    "resources": [
+        {
+            "properties": {
+                "lenses": {
+                    "0": {
+                        "order": 0,
+                        "parts": {
+                          "0": {
+                            "position": {
+                              "x": 0,
+                              "y": 0,
+                              "rowSpan": 1,
+                              "colSpan": 2
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": "[variables('appInsightResourceId')]"
+                                }
+                              ],
+                              "type": "Extension[azure]/AppInsightsExtension/PartType/UsersTrendlineAdaptedPart",
+                              "isAdapter": true,
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
+                          },
+                          "1": {
+                            "position": {
+                              "x": 2,
+                              "y": 0,
+                              "rowSpan": 1,
+                              "colSpan": 2
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": "[variables('appInsightResourceId')]"
+                                }
+                              ],
+                              "type": "Extension[azure]/AppInsightsExtension/PartType/PageViewsTrendlineAdaptedPart",
+                              "isAdapter": true,
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
+                          },
+                          "2": {
+                            "position": {
+                              "x": 4,
+                              "y": 0,
+                              "rowSpan": 1,
+                              "colSpan": 2
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": "[variables('appInsightResourceId')]"
+                                }
+                              ],
+                              "type": "Extension[azure]/AppInsightsExtension/PartType/SessionsTrendlineAdaptedPart",
+                              "isAdapter": true,
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
+                          },
+                          "3": {
+                            "position": {
+                              "x": 6,
+                              "y": 0,
+                              "rowSpan": 4,
+                              "colSpan": 6
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": "[variables('appInsightResourceId')]"
+                                }
+                              ],
+                              "type": "Extension[azure]/AppInsightsExtension/PartType/PageViewsAdapterPart",
+                              "isAdapter": true,
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
+                          },
+                          "4": {
+                            "position": {
+                              "x": 0,
+                              "y": 1,
+                              "rowSpan": 4,
+                              "colSpan": 6
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": "[variables('appInsightResourceId')]"
+                                },
+                                {
+                                  "name": "AdapterDashboardTimeRange",
+                                  "binding": "timeRange",
+                                  "isOptional": true
+                                }
+                              ],
+                              "type": "Extension[azure]/AppInsightsExtension/PartType/UsageTimeLineAdapterPart",
+                              "settings": {
+                                "content": {
+                                  "metricsExplorerJson": "{\n  \"version\": \"1.4.1\",\n  \"isCustomDataModel\": false,\n  \"items\": [\n    {\n      \"id\": \"F2CA7FB5-FB46-4932-AAA6-A9BE759DEC8C\",\n      \"chartType\": \"Bar\",\n      \"chartHeight\": 2,\n      \"metrics\": [\n        {\n          \"id\": \"context.user.anonId.hash\",\n          \"metricAggregation\": \"Cardinality\",\n          \"color\": \"msportalfx-bgcolor-b2\"\n        }\n      ],\n      \"priorPeriod\": false,\n      \"clickAction\": {\n        \"defaultBlade\": \"SearchBlade\"\n      },\n      \"horizontalBars\": true,\n      \"showOther\": true,\n      \"aggregation\": \"Cardinality\",\n      \"percentage\": false,\n      \"palette\": \"warmHues\",\n      \"yAxisOption\": 0,\n      \"title\": \"\"\n    },\n    {\n      \"id\": \"7456CFE0-22CB-488E-B15E-7088BD58E5BF\",\n      \"chartType\": \"Bar\",\n      \"chartHeight\": 2,\n      \"metrics\": [\n        {\n          \"id\": \"context.session.id.hash\",\n          \"metricAggregation\": \"Cardinality\",\n          \"color\": \"msportalfx-bgcolor-j1\"\n        }\n      ],\n      \"priorPeriod\": false,\n      \"clickAction\": {\n        \"defaultBlade\": \"SearchBlade\"\n      },\n      \"horizontalBars\": true,\n      \"showOther\": true,\n      \"aggregation\": \"Cardinality\",\n      \"percentage\": false,\n      \"palette\": \"greenHues\",\n      \"yAxisOption\": 0,\n      \"title\": \"\"\n    },\n    {\n      \"id\": \"8A4EA1AD-09C2-4AF9-B0D8-8BFF0AC37C11\",\n      \"chartType\": \"Bar\",\n      \"chartHeight\": 1,\n      \"metrics\": [\n        {\n          \"id\": \"view.count\",\n          \"metricAggregation\": \"Sum\",\n          \"color\": \"msportalfx-bgcolor-g0\"\n        }\n      ],\n      \"priorPeriod\": false,\n      \"clickAction\": {\n        \"defaultBlade\": \"SearchBlade\"\n      },\n      \"horizontalBars\": true,\n      \"showOther\": true,\n      \"aggregation\": \"Sum\",\n      \"percentage\": false,\n      \"palette\": \"blueHues\",\n      \"yAxisOption\": 0,\n      \"title\": \"\"\n    },\n    {\n      \"id\": \"789CC524-1B1F-42C9-B141-950D7483CED8\",\n      \"chartType\": \"Bar\",\n      \"chartHeight\": 1,\n      \"metrics\": [\n        {\n          \"id\": \"context.user.authId.hash\",\n          \"metricAggregation\": \"Cardinality\",\n          \"color\": \"msportalfx-bgcolor-b2\"\n        }\n      ],\n      \"priorPeriod\": false,\n      \"clickAction\": {\n        \"defaultBlade\": \"SearchBlade\"\n      },\n      \"horizontalBars\": true,\n      \"showOther\": true,\n      \"aggregation\": \"Cardinality\",\n      \"percentage\": false,\n      \"palette\": \"warmHues\",\n      \"yAxisOption\": 0,\n      \"title\": \"\"\n    }\n  ],\n  \"title\": \"Usage timeline\",\n  \"currentFilter\": {\n    \"eventTypes\": [\n      1,\n      4,\n      2,\n      6,\n      9,\n      3,\n      5\n    ],\n    \"typeFacets\": {},\n    \"isPermissive\": false\n  },\n  \"timeContext\": {\n    \"durationMs\": 2592000000,\n    \"endTime\": null,\n    \"createdTime\": \"2017-06-21T22:35:45.327Z\",\n    \"isInitialTime\": false,\n    \"grain\": 1,\n    \"useDashboardTimeRange\": false\n  },\n  \"jsonUri\": \"Usage_L0_UsageAnalyticsMetrics\",\n  \"timeSource\": 0\n}"
+                                }
+                              },
+                              "isAdapter": true,
+                              "viewState": {
+                                "content": {
+                                  "metricsExplorerJson": "{\n  \"version\": \"1.4.1\",\n  \"isCustomDataModel\": false,\n  \"items\": [\n    {\n      \"id\": \"F2CA7FB5-FB46-4932-AAA6-A9BE759DEC8C\",\n      \"chartType\": \"Bar\",\n      \"chartHeight\": 2,\n      \"metrics\": [\n        {\n          \"id\": \"context.user.anonId.hash\",\n          \"metricAggregation\": \"Cardinality\",\n          \"color\": \"msportalfx-bgcolor-b2\"\n        }\n      ],\n      \"priorPeriod\": false,\n      \"clickAction\": {\n        \"defaultBlade\": \"SearchBlade\"\n      },\n      \"horizontalBars\": true,\n      \"showOther\": true,\n      \"aggregation\": \"Cardinality\",\n      \"percentage\": false,\n      \"palette\": \"warmHues\",\n      \"yAxisOption\": 0,\n      \"title\": \"\"\n    },\n    {\n      \"id\": \"7456CFE0-22CB-488E-B15E-7088BD58E5BF\",\n      \"chartType\": \"Bar\",\n      \"chartHeight\": 2,\n      \"metrics\": [\n        {\n          \"id\": \"context.session.id.hash\",\n          \"metricAggregation\": \"Cardinality\",\n          \"color\": \"msportalfx-bgcolor-j1\"\n        }\n      ],\n      \"priorPeriod\": false,\n      \"clickAction\": {\n        \"defaultBlade\": \"SearchBlade\"\n      },\n      \"horizontalBars\": true,\n      \"showOther\": true,\n      \"aggregation\": \"Cardinality\",\n      \"percentage\": false,\n      \"palette\": \"greenHues\",\n      \"yAxisOption\": 0,\n      \"title\": \"\"\n    },\n    {\n      \"id\": \"8A4EA1AD-09C2-4AF9-B0D8-8BFF0AC37C11\",\n      \"chartType\": \"Bar\",\n      \"chartHeight\": 1,\n      \"metrics\": [\n        {\n          \"id\": \"view.count\",\n          \"metricAggregation\": \"Sum\",\n          \"color\": \"msportalfx-bgcolor-g0\"\n        }\n      ],\n      \"priorPeriod\": false,\n      \"clickAction\": {\n        \"defaultBlade\": \"SearchBlade\"\n      },\n      \"horizontalBars\": true,\n      \"showOther\": true,\n      \"aggregation\": \"Sum\",\n      \"percentage\": false,\n      \"palette\": \"blueHues\",\n      \"yAxisOption\": 0,\n      \"title\": \"\"\n    },\n    {\n      \"id\": \"789CC524-1B1F-42C9-B141-950D7483CED8\",\n      \"chartType\": \"Bar\",\n      \"chartHeight\": 1,\n      \"metrics\": [\n        {\n          \"id\": \"context.user.authId.hash\",\n          \"metricAggregation\": \"Cardinality\",\n          \"color\": \"msportalfx-bgcolor-b2\"\n        }\n      ],\n      \"priorPeriod\": false,\n      \"clickAction\": {\n        \"defaultBlade\": \"SearchBlade\"\n      },\n      \"horizontalBars\": true,\n      \"showOther\": true,\n      \"aggregation\": \"Cardinality\",\n      \"percentage\": false,\n      \"palette\": \"warmHues\",\n      \"yAxisOption\": 0,\n      \"title\": \"\"\n    }\n  ],\n  \"title\": \"Usage timeline\",\n  \"currentFilter\": {\n    \"eventTypes\": [\n      1,\n      4,\n      2,\n      6,\n      9,\n      3,\n      5\n    ],\n    \"typeFacets\": {},\n    \"isPermissive\": false\n  },\n  \"timeContext\": {\n    \"durationMs\": 2592000000,\n    \"endTime\": null,\n    \"createdTime\": \"2017-06-21T22:35:45.327Z\",\n    \"isInitialTime\": false,\n    \"grain\": 1,\n    \"useDashboardTimeRange\": false\n  },\n  \"jsonUri\": \"Usage_L0_UsageAnalyticsMetrics\",\n  \"timeSource\": 0\n}"
+                                }
+                              },
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
+                          },
+                          "5": {
+                            "position": {
+                              "x": 6,
+                              "y": 4,
+                              "rowSpan": 4,
+                              "colSpan": 6
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": {
+                                    "SubscriptionId": "[parameters('subscriptionId')]",
+                                    "ResourceGroup": "[parameters('appInsightResourceGroup')]",
+                                    "Name": "[parameters('appInsightName')]"
+                                  }
+                                },
+                                {
+                                  "name": "TimeContext",
+                                  "value": {
+                                    "durationMs": 86400000,
+                                    "endTime": null,
+                                    "createdTime": "2017-06-21T21:42:42.979Z",
+                                    "isInitialTime": true,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                  }
+                                },
+                                {
+                                  "name": "ChartJsonDefinitionId",
+                                  "value": "pinJson:?name={\n  \"chart\": {\n    \"id\": \"CA466DEF-2B3D-409D-BB2E-1184AC54E7B0\",\n    \"grouping\": {\n      \"kind\": \"ByDimension\",\n      \"dimension\": \"context.operation.name\"\n    },\n    \"chartType\": \"Grid\",\n    \"chartHeight\": 1,\n    \"metrics\": [\n      {\n        \"id\": \"view.durationMetric.value\",\n        \"metricAggregation\": \"Avg\",\n        \"color\": \"msportalfx-bgcolor-g0\"\n      },\n      {\n        \"id\": \"view.durationMetric.value\",\n        \"metricAggregation\": \"Count\"\n      }\n    ],\n    \"priorPeriod\": true,\n    \"horizontalBars\": true,\n    \"showOther\": true,\n    \"aggregation\": \"Avg\",\n    \"percentage\": false,\n    \"palette\": \"blueHues\",\n    \"yAxisOption\": 0,\n    \"title\": \"What are my slowest pages?\"\n  },\n  \"title\": \"What are my slowest pages?\",\n  \"filters\": {\n    \"context.device.type\": [\n      \"Browser\"\n    ]\n  }\n}"
+                                },
+                                {
+                                  "name": "BladeId",
+                                  "value": "Dashboard.64028566-06d7-4da9-a141-2694391a2677"
+                                },
+                                {
+                                  "name": "Version",
+                                  "value": "1.1"
+                                }
+                              ],
+                              "type": "Extension/AppInsightsExtension/PartType/AppInsightsCollectionPart",
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
+                          },
+                          "6": {
+                            "position": {
+                              "x": 0,
+                              "y": 5,
+                              "rowSpan": 4,
+                              "colSpan": 6
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": {
+                                    "SubscriptionId": "[parameters('subscriptionId')]",
+                                    "ResourceGroup": "[parameters('appInsightResourceGroup')]",
+                                    "Name": "[parameters('appInsightName')]"
+                                  }
+                                },
+                                {
+                                  "name": "TimeContext",
+                                  "value": {
+                                    "durationMs": 86400000,
+                                    "createdTime": "2017-06-21T22:29:50.726Z",
+                                    "isInitialTime": false,
+                                    "grain": 1,
+                                    "useDashboardTimeRange": false
+                                  }
+                                },
+                                {
+                                  "name": "ChartJsonDefinitionId",
+                                  "value": "pinJson:?name={\n  \"chart\": {\n    \"id\": \"7EE576D6-3968-4F8F-AA8A-A247B917DB0B\",\n    \"grouping\": {\n      \"kind\": \"ByDimension\",\n      \"dimension\": \"view.name\"\n    },\n    \"chartType\": \"Grid\",\n    \"chartHeight\": 1,\n    \"metrics\": [\n      {\n        \"id\": \"view.count\",\n        \"metricAggregation\": \"Sum\",\n        \"color\": \"msportalfx-bgcolor-g0\"\n      }\n    ],\n    \"priorPeriod\": true,\n    \"horizontalBars\": true,\n    \"showOther\": true,\n    \"aggregation\": \"Sum\",\n    \"percentage\": false,\n    \"palette\": \"blueHues\",\n    \"yAxisOption\": 0,\n    \"title\": \"\"\n  },\n  \"title\": \"Total of Page views by View page name\",\n  \"filters\": {}\n}"
+                                },
+                                {
+                                  "name": "BladeId",
+                                  "value": "Dashboard.617dc266-8f31-4d39-a56c-33c4de4c1e2a"
+                                },
+                                {
+                                  "name": "Version",
+                                  "value": "1.1"
+                                }
+                              ],
+                              "type": "Extension/AppInsightsExtension/PartType/AppInsightsCollectionPart",
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
+                          }
+
+                        }
+                    }
+                }
+            },
+            "metadata": { },
+            "apiVersion": "2015-08-01-preview",
+            "type": "Microsoft.Portal/dashboards",
+            "name": "[parameters('dashboardName')]",
+            "location": "westus",
+            "tags": {
+                "hidden-title": "[parameters('dashboardName')]"
+            }
+        }
+    ]
+}
