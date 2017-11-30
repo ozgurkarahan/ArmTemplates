@@ -244,6 +244,69 @@
                                 "type": "ApplicationInsights"
                               }
                             }
+                          },
+                          "7": {
+                            "position": {
+                              "x": 6,
+                              "y": 8,
+                              "rowSpan": 5,
+                              "colSpan": 6
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": "[variables('appInsightResourceId')]"
+                                },
+                                {
+                                  "name": "AdapterDashboardTimeRange",
+                                  "binding": "timeRange",
+                                  "isOptional": true
+                                }
+                              ],
+                              "type": "Extension[azure]/AppInsightsExtension/PartType/OverviewTimeLineAdapterPart",
+                              "settings": {},
+                              "isAdapter": true,
+                              "viewState": {
+                                "content": {}
+                              },
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
+                          },
+
+                          "8": {
+                            "position": {
+                              "x": 0,
+                              "y": 9,
+                              "rowSpan": 5,
+                              "colSpan": 6
+                            },
+                            "metadata": {
+                              "inputs": [
+                                {
+                                  "name": "ComponentId",
+                                  "value": "[variables('appInsightResourceId')]"
+                                },
+                                {
+                                  "name": "AdapterDashboardTimeRange",
+                                  "binding": "timeRange",
+                                  "isOptional": true
+                                }
+                              ],
+                              "type": "Extension[azure]/AppInsightsExtension/PartType/PerformanceTimeLineAdapterPart",
+                              "settings": {},
+                              "isAdapter": true,
+                              "viewState": {
+                                "content": {}
+                              },
+                              "asset": {
+                                "idInputName": "ComponentId",
+                                "type": "ApplicationInsights"
+                              }
+                            }
                           }
 
                         }
